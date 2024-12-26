@@ -1,11 +1,11 @@
 {
-  "name": "assignment",
+  "name": "dazn assignment",
   "version": "1.0.0",
   "description": "Movies api",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "start": "node ./dist/server/index.js"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
@@ -14,7 +14,9 @@
     "mongoose": "^8.2.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "@types/node": "^22.10.2",
+    "nodemon": "^2.0.15",
+    "typescript": "^5.7.2"
   },
   "author": "Ritik Raj",
   "license": "ISC"
