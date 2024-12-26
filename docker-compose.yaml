@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    logging:
+      driver: none
+    volumes:
+      - ./docker/volumes/mongo:/data/db
+    networks:
+      - default
+  
+  movie-api:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports: 
+      - 3000:3000 
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - .:/app
+    command: ['npm', 'run', 'start']
+    networks:
+      default:
+        aliases:
+          - movie.api.localdomain
+
+networks:
+  default:
